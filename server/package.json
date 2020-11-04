@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "seeds": "mongo < ./db/seeds.js",
     "test": "mocha models/specs",
     "server:dev": "nodemon server.js"
   },
@@ -16,6 +17,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "uuid": "^8.3.1"
+    "mongodb": "^3.6.2"
   }
 }

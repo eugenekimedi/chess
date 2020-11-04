@@ -1,7 +1,7 @@
 use chess;
 db.dropDatabase();
 
-db.games.insertMany([
+db.games.insertOne(
     {
         "data": [
             {position: "a8", color: "white", piece: {"name": "rook"}},
@@ -75,5 +75,5 @@ db.games.insertMany([
             "player2": "Jane",
             "turn": "white",
         }
-      }
-])
+    }
+)

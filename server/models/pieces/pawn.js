@@ -1,7 +1,8 @@
+const Piece = require('../pieces/piece.js');
+
 class Pawn extends Piece {
-    constructor(name, position) {
-        super(name, position);
-        this.name = 'Square';
+    constructor(name, color) {
+        super(name, color);
     }
 }
 

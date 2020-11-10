@@ -1,11 +1,7 @@
 class Piece {
-    constructor(name, position) {
+    constructor(name, color) {
         this.name = name;
-        this.position = position;
-    }
-    
-    move(newPosition) {
-        this.position = newPosition;
+        this.color = color;
     }
 }
 

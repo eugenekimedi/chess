@@ -89,9 +89,11 @@ class Game {
 
     }
 
-    // move(position) {
-    //     this.board[indexOf(this.board)];
-    // }
+    move(oldPosition, newPosition) {
+        const pieceToMove = this.board[oldPosition].piece
+        this.board[newPosition].piece = pieceToMove
+        this.board[oldPosition].piece = {}
+    }
 }
 
 module.exports = Game;

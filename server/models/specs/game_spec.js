@@ -36,4 +36,12 @@ describe('Game', function () {
         assert.strictEqual(game.board[position].piece instanceof Pawn, true)
     }
   })
+
+  it('should be able to move a pawn 1 square up', function() {
+      game.move(48, 40)
+      const oldPosition = game.board[48].piece
+      const newPosition = game.board[40].piece
+      assert.deepStrictEqual(oldPosition, {})
+      assert.deepStrictEqual(newPosition, new Pawn("pawn", "white"))
+  })
 });

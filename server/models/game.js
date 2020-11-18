@@ -91,8 +91,11 @@ class Game {
 
     move(oldPosition, newPosition){
         const pieceToMove = this.board[oldPosition].piece
-        this.board[newPosition].piece = pieceToMove
-        this.board[oldPosition].piece = {}
+        const possibleMoves = pieceToMove.calculatePossibleMoves()
+        if (possibleMoves.contains(oldPosition - newPosition)) {
+            this.board[newPosition].piece = pieceToMove
+            this.board[oldPosition].piece = {}
+        }
     }
 }
 

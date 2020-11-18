@@ -41,6 +41,6 @@ describe('Game', function () {
       const oldPosition = game.board[48].piece
       const newPosition = game.board[40].piece
       assert.deepStrictEqual(oldPosition, {})
-      assert.deepStrictEqual(newPosition, new Pawn("pawn", "white"))
+      assert.deepStrictEqual(newPosition, new Pawn("pawn", "white", ))
   })
 });

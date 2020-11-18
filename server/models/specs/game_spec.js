@@ -32,7 +32,6 @@ describe('Game', function () {
   it('should initialize with 2 rows of pawns', function() {
     const pawnStartingPositions = [8, 9, 10, 11, 12, 13, 14, 15, 48, 49, 50, 51, 52, 53, 54, 55]
     for (position of pawnStartingPositions) {
-        console.log(game.board[position].piece)
         assert.strictEqual(game.board[position].piece instanceof Pawn, true)
     }
   })

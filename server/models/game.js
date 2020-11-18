@@ -89,7 +89,7 @@ class Game {
 
     }
 
-    move(oldPosition, newPosition) {
+    move(oldPosition, newPosition){
         const pieceToMove = this.board[oldPosition].piece
         this.board[newPosition].piece = pieceToMove
         this.board[oldPosition].piece = {}

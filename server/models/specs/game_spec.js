@@ -61,16 +61,16 @@ describe('Game', function () {
 
   it('should be able to move a pawn 1 square up', function() {
       game.move(48, 40)
-      const oldPosition = game.board[48].piece
-      const newPosition = game.board[40].piece
+      const oldPosition = game.getPieceAtIndex(48)
+      const newPosition = game.getPieceAtIndex(40)
       assert.deepStrictEqual(oldPosition, {})
       assert.deepStrictEqual(newPosition, new Pawn("pawn", "white", "a3" ))
   })
 
   it('should be able to move a pawn 2 squares up as initial move', function() {
     game.move(48, 32)
-    const oldPosition = game.board[48].piece
-    const newPosition = game.board[32].piece
+    const oldPosition = game.getPieceAtIndex(48)
+    const newPosition = game.getPieceAtIndex(32)
     assert.deepStrictEqual(oldPosition, {})
     assert.deepStrictEqual(newPosition, new Pawn("pawn", "white", "a4" ))
 })

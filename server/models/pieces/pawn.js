@@ -25,6 +25,11 @@ class Pawn extends Piece {
             }
         }
     }
+
+    getPossibleMoves() {
+        this.calculatePossibleMoves();
+        return this.possibleMoves;
+    }
 }
 
 module.exports = Pawn;

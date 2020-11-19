@@ -3,8 +3,8 @@ const Pawn = require("./pieces/pawn")
 class Game {
     constructor(player1, player2) {
         this.pieces = {
-            whitePawn: new Pawn("pawn", "white"),
-            blackPawn: new Pawn("pawn", "black")
+            whitePawns: this.createPawns("white"),
+            blackPawns: this.createPawns("black")
         };
         this.gameState = {
             state: "active",
@@ -29,14 +29,14 @@ class Game {
             {position: "f8", color: "black", piece: {}},
             {position: "g8", color: "white", piece: {}},
             {position: "h8", color: "black", piece: {}},
-            {position: "a7", color: "white", piece: this.pieces.blackPawn},
-            {position: "b7", color: "black", piece: this.pieces.blackPawn},
-            {position: "c7", color: "white", piece: this.pieces.blackPawn},
-            {position: "d7", color: "black", piece: this.pieces.blackPawn},
-            {position: "e7", color: "white", piece: this.pieces.blackPawn},
-            {position: "f7", color: "black", piece: this.pieces.blackPawn},
-            {position: "g7", color: "white", piece: this.pieces.blackPawn},
-            {position: "h7", color: "black", piece: this.pieces.blackPawn},
+            {position: "a7", color: "white", piece: this.pieces.blackPawns[0]},
+            {position: "b7", color: "black", piece: this.pieces.blackPawns[1]},
+            {position: "c7", color: "white", piece: this.pieces.blackPawns[2]},
+            {position: "d7", color: "black", piece: this.pieces.blackPawns[3]},
+            {position: "e7", color: "white", piece: this.pieces.blackPawns[4]},
+            {position: "f7", color: "black", piece: this.pieces.blackPawns[5]},
+            {position: "g7", color: "white", piece: this.pieces.blackPawns[6]},
+            {position: "h7", color: "black", piece: this.pieces.blackPawns[7]},
             {position: "a6", color: "white", piece: {}},
             {position: "b6", color: "black", piece: {}},
             {position: "c6", color: "white", piece: {}},
@@ -69,14 +69,14 @@ class Game {
             {position: "f3", color: "black", piece: {}},
             {position: "g3", color: "white", piece: {}},
             {position: "h3", color: "black", piece: {}},
-            {position: "a2", color: "white", piece: this.pieces.whitePawn},
-            {position: "b2", color: "black", piece: this.pieces.whitePawn},
-            {position: "c2", color: "white", piece: this.pieces.whitePawn},
-            {position: "d2", color: "black", piece: this.pieces.whitePawn},
-            {position: "e2", color: "white", piece: this.pieces.whitePawn},
-            {position: "f2", color: "black", piece: this.pieces.whitePawn},
-            {position: "g2", color: "white", piece: this.pieces.whitePawn},
-            {position: "h2", color: "black", piece: this.pieces.whitePawn},
+            {position: "a2", color: "white", piece: this.pieces.whitePawns[0]},
+            {position: "b2", color: "black", piece: this.pieces.whitePawns[1]},
+            {position: "c2", color: "white", piece: this.pieces.whitePawns[2]},
+            {position: "d2", color: "black", piece: this.pieces.whitePawns[3]},
+            {position: "e2", color: "white", piece: this.pieces.whitePawns[4]},
+            {position: "f2", color: "black", piece: this.pieces.whitePawns[5]},
+            {position: "g2", color: "white", piece: this.pieces.whitePawns[6]},
+            {position: "h2", color: "black", piece: this.pieces.whitePawns[7]},
             {position: "a1", color: "white", piece: {}},
             {position: "b1", color: "black", piece: {}},
             {position: "c1", color: "white", piece: {}},
@@ -91,11 +91,25 @@ class Game {
 
     move(oldPosition, newPosition){
         const pieceToMove = this.board[oldPosition].piece
-        const possibleMoves = pieceToMove.calculatePossibleMoves()
-        if (possibleMoves.contains(oldPosition - newPosition)) {
+        const possibleMoves = pieceToMove.getPossibleMoves()
+        const moveAsInt = newPosition - oldPosition
+        if (possibleMoves.includes(moveAsInt)) {
             this.board[newPosition].piece = pieceToMove
+            this.board[newPosition].piece.possibleMoves = [];
+            this.board[newPosition].piece.position = this.board[newPosition].position;
             this.board[oldPosition].piece = {}
         }
+    }
+
+    createPawns(color) {
+        const pawns = []
+        const columns = ["a", "b", "c", "d", "e", "f", "g", "h"];
+        const row = color === "white" ? "2" : "7"
+        for (let i = 0; i < columns.length; i++) {
+            let pawn = new Pawn("pawn", color, columns[i] + row)
+            pawns.push(pawn)
+        }
+        return pawns
     }
 }
 

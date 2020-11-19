@@ -19,14 +19,32 @@ describe('Game', function () {
     assert.deepStrictEqual(game.board.length, 64);
   });
 
-  it('should initialize a white pawn pice', function() {
-    pawn = new Pawn("pawn", "white");
-    assert.deepStrictEqual(game.pieces.whitePawn, pawn);
+  it('should initialize an array of white pawns', function() {
+    const expected = [
+        new Pawn("pawn", "white", "a2"),
+        new Pawn("pawn", "white", "b2"),
+        new Pawn("pawn", "white", "c2"),
+        new Pawn("pawn", "white", "d2"),
+        new Pawn("pawn", "white", "e2"),
+        new Pawn("pawn", "white", "f2"),
+        new Pawn("pawn", "white", "g2"),
+        new Pawn("pawn", "white", "h2")
+    ]
+    assert.deepStrictEqual(game.pieces.whitePawns, expected);
   });
 
-  it('should initialize a white pawn pice', function() {
-    pawn = new Pawn("pawn", "black");
-    assert.deepStrictEqual(game.pieces.blackPawn, pawn);
+  it('should initialize an array of black pawns', function() {
+    const expected = [
+        new Pawn("pawn", "black", "a7"),
+        new Pawn("pawn", "black", "b7"),
+        new Pawn("pawn", "black", "c7"),
+        new Pawn("pawn", "black", "d7"),
+        new Pawn("pawn", "black", "e7"),
+        new Pawn("pawn", "black", "f7"),
+        new Pawn("pawn", "black", "g7"),
+        new Pawn("pawn", "black", "h7")
+    ]
+    assert.deepStrictEqual(game.pieces.blackPawns, expected);
   });
 
   it('should initialize with 2 rows of pawns', function() {
@@ -41,6 +59,14 @@ describe('Game', function () {
       const oldPosition = game.board[48].piece
       const newPosition = game.board[40].piece
       assert.deepStrictEqual(oldPosition, {})
-      assert.deepStrictEqual(newPosition, new Pawn("pawn", "white", ))
+      assert.deepStrictEqual(newPosition, new Pawn("pawn", "white", "a3" ))
   })
+
+  it('should be able to move a pawn 2 squares up as initial move', function() {
+    game.move(48, 32)
+    const oldPosition = game.board[48].piece
+    const newPosition = game.board[32].piece
+    assert.deepStrictEqual(oldPosition, {})
+    assert.deepStrictEqual(newPosition, new Pawn("pawn", "white", "a4" ))
+})
 });

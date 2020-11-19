@@ -89,6 +89,10 @@ class Game {
 
     }
 
+    getPieceAtIndex(index) {
+        return this.board[index].piece;
+    }
+
     move(oldPosition, newPosition){
         const pieceToMove = this.board[oldPosition].piece
         const possibleMoves = pieceToMove.getPossibleMoves()

@@ -47,6 +47,11 @@ describe('Game', function () {
     assert.deepStrictEqual(game.pieces.blackPawns, expected);
   });
 
+  it('should be able to get the piece at a particular index', function() {
+      expected = new Pawn("pawn", "white", "a2")
+      assert.deepStrictEqual(game.getPieceAtIndex(48), expected)
+  })
+
   it('should initialize with 2 rows of pawns', function() {
     const pawnStartingPositions = [8, 9, 10, 11, 12, 13, 14, 15, 48, 49, 50, 51, 52, 53, 54, 55]
     for (position of pawnStartingPositions) {
